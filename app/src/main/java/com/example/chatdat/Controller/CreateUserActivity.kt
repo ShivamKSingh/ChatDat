@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.chatdat.R
 import com.example.chatdat.Services.AuthService
+import com.example.chatdat.Services.UserDataService
 import kotlinx.android.synthetic.main.activity_create_user.*
 import java.util.*
 
@@ -58,8 +59,10 @@ class CreateUserActivity : AppCompatActivity() {
 
     fun createUserClicked(view: View)
     {
+        val userName = createUserNameTxt.text.toString()
         val email = createEmailText.text.toString()
         val password = createPasswordText.text.toString()
+
 
         AuthService.registerUser(this, email, password){ registerSuccess ->
             if (registerSuccess)
@@ -67,8 +70,15 @@ class CreateUserActivity : AppCompatActivity() {
                 AuthService.loginUser(this, email, password){loginSuccess ->
                     if(loginSuccess)
                     {
-                        println(AuthService.authToken)
-                        println(AuthService.userEmail)
+                       AuthService.createUser(this, userName, email, userAvatar, avatarColor) { createSuccess ->
+                           if (createSuccess)
+                           {
+                               println(UserDataService.avatarName)
+                               println(UserDataService.avatarColor)
+                               println(UserDataService.name)
+                               finish()
+                           }
+                       }
 
                     }
                 }
