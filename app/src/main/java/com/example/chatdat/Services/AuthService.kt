@@ -96,7 +96,7 @@ object AuthService {
                 UserDataService.name = response.getString("name")
                 UserDataService.email = response.getString("email")
                 UserDataService.avatarName = response.getString("avatarName")
-                UserDataService.avatarColor = response.getString("avtarColor")
+                UserDataService.avatarColor = response.getString("avatarColor")
                 UserDataService.id = response.getString("_id")
 
                 complete(true)
@@ -122,7 +122,7 @@ object AuthService {
 
             override fun getHeaders(): MutableMap<String, String> {
                 val headers = HashMap<String,String>()
-                headers.put("Authorization", "Bearer $authToken")
+                headers["Authorization"] = "Bearer $authToken"
                 return headers
             }
         }
