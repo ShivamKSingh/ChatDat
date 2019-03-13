@@ -65,6 +65,8 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
 
         setupAdapters()
+        LocalBroadcastManager.getInstance(this).registerReceiver(userDataChangeReceiver, IntentFilter(
+            BROADCAT_USER_DATA_CHANGE))
 
         channel_list.setOnItemClickListener { _, _, i, _ ->
             selectedChannel = MessageService.channels[i]
@@ -78,14 +80,6 @@ class MainActivity : AppCompatActivity() {
             AuthService.findUserByEmail(this){}
         }
 
-    }
-
-    override fun onResume() {
-        LocalBroadcastManager.getInstance(this).registerReceiver(userDataChangeReceiver, IntentFilter(
-            BROADCAT_USER_DATA_CHANGE))
-
-
-        super.onResume()
     }
 
     override fun onDestroy() {
@@ -161,6 +155,8 @@ class MainActivity : AppCompatActivity() {
             userimageNavHeader.setImageResource(R.drawable.profiledefault)
             userimageNavHeader.setBackgroundColor(Color.TRANSPARENT)
             loginBtnNavHeader.text = "Login"
+
+            mainChannelName.text = "Please log in"
 
         } else
         {
