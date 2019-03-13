@@ -7,12 +7,14 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import com.example.chatdat.Controller.App
 import com.example.chatdat.Model.Channel
+import com.example.chatdat.Model.Message
 import com.example.chatdat.Utilities.URL_GET_CHANNELS
 import org.json.JSONException
 
 object MessageService {
 
     val channels = ArrayList<Channel>()
+    val messages = ArrayList<Message>()
 
     fun getChannel(complete: (Boolean) -> Unit) {
 
