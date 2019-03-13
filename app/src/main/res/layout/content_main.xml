@@ -16,7 +16,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp" android:textAlignment="center"
-            android:id="@+id/mainChannelName"/>
+            android:id="@+id/mainChannelName" android:textStyle="bold" android:textSize="18sp"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
